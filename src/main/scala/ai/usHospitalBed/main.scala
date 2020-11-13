@@ -10,10 +10,9 @@ object main extends SparkSessionWrapper {
       System.exit(1)
     }
 
-    urlLoader(args(0), spark) match {
+    loadUrlToDisk(args(0), spark) match {
       case Failure(e) => println(e)
-      case Success(r) => println(r)
+      case Success(r) => mongoDbLoader(r)
     }
   }
-  
 }
